@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'lab.dart';
 import 'physics.dart';
 import 'plots.dart';
@@ -23,7 +24,7 @@ class IntroPage extends StatelessWidget {
         const Para('Build a real breadboard circuit, sweep a 0–30 V supply and watch a diode’s exponential V-I curve appear from your own measurements.'),
         const Para('Switch between silicon, Schottky, germanium, LED and Zener devices, change the series resistor and heat the junction – every reading comes from the Shockley equation, solved live.'),
         const SizedBox(height: 10),
-        Wrap(spacing: 10, runSpacing: 10, children: [Btn('Start the experiment', primary: true, onTap: () => go(2)), Btn('How biasing works', onTap: () => go(1))]),
+        Wrap(spacing: 10, runSpacing: 10, children: [Btn('Start the experiment', primary: true, onTap: () => go(2)), Btn('How biasing works', onTap: () => go(1)), Btn('Download Android app (APK)', icon: Icons.android, onTap: () => launchUrl(Uri.parse('https://github.com/DlightSair/EC-lab_diode/releases/latest'), mode: LaunchMode.externalApplication))]),
       ], b: [
         const SizedBox(height: 12),
         Inset(pad: const EdgeInsets.all(6), child: SizedBox(height: 190, child: _Anim(builder: (t) => CustomPaint(painter: JunctionPainter(0, t, 0))))),
